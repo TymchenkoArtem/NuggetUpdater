@@ -1,0 +1,72 @@
+[Setup]
+AppName=NuggetUpdater
+AppVersion=1.0
+AppPublisher=Artem Tymchenko
+AppPublisherURL=https://github.com/TymchenkoArtem
+DefaultDirName={pf}\NuggetUpdater
+DefaultGroupName=NuggetUpdater
+OutputDir=Output
+OutputBaseFilename=NuggetUpdaterInstaller
+Compression=lzma
+SolidCompression=yes
+PrivilegesRequired=admin
+UninstallDisplayIcon={app}\NuggetUpdater.exe
+
+[Files]
+Source: "<<pathToExe>>\NuggetUpdater.exe"; DestDir: "{app}"
+Source: "<<pathToIco>>\NuggetUpdater.ico"; DestDir: "{app}"
+Source: "<<pathToAllReleaseFiles>>\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
+
+[Icons]
+Name: "{group}\NuggetUpdater"; Filename: "{app}\NuggetUpdater.exe"
+Name: "{commondesktop}\NuggetUpdater"; Filename: "{app}\NuggetUpdater.exe"
+
+[Code]
+var
+  InputPage: TInputQueryWizardPage;
+  DefaultPackageName: String;
+  NuGetSource: String;
+
+procedure InitializeWizard;
+begin
+  InputPage := CreateInputQueryPage(
+    wpSelectDir,
+    'Configuration',
+    'NuGet Configuration Options',
+    'Optionally configure the default NuGet package and custom NuGet storage.'
+  );
+
+  InputPage.Add('Default Package Name (optional, used if exists):', False);
+  InputPage.Add('Custom NuGet Storage URL (optional):', False);
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+var
+  AppDataPath: String;
+  ConfigFile: String;
+  AppSettings: TStringList;
+begin
+  Result := True;
+
+  if CurPageID = InputPage.ID then
+  begin
+    DefaultPackageName := InputPage.Values[0];
+    NuGetSource := InputPage.Values[1];
+
+    AppDataPath := ExpandConstant('{userappdata}\NuggetUpdater');
+    if not DirExists(AppDataPath) then
+      CreateDir(AppDataPath);
+
+    ConfigFile := AddBackslash(AppDataPath) + 'appconfigs.json';
+    AppSettings := TStringList.Create;
+    try
+      AppSettings.Add('{');
+      AppSettings.Add('  "DefaultPackageName": "' + DefaultPackageName + '",');
+      AppSettings.Add('  "CustomNuGetSource": "' + NuGetSource + '"');
+      AppSettings.Add('}');
+      AppSettings.SaveToFile(ConfigFile);
+    finally
+      AppSettings.Free;
+    end;
+  end;
+end;

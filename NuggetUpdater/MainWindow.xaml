@@ -1,0 +1,43 @@
+﻿<Window x:Class="NuggetUpdater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nugget Updater" Height="222" Width="350"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10">
+            <Label Content="NuGet Package:" />
+            <ComboBox Name="NuGetPackageComboBox"
+                      IsEnabled="False"
+                      SelectionChanged="OnNuGetPackageChanged"
+                      VirtualizingStackPanel.IsVirtualizing="True"
+                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                      ToolTip="Select a NuGet package." />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,10">
+            <Label Content="NuGet Version:" />
+            <ComboBox Name="NuGetVersionComboBox"
+                      IsEnabled="False"
+                      VirtualizingStackPanel.IsVirtualizing="True"
+                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                      ToolTip="Select a version for the selected NuGet package." />
+        </StackPanel>
+
+        <Button Content="Update and Commit"
+                Grid.Row="2"
+                VerticalAlignment="Top"
+                Height="32"
+                BorderBrush="DarkGreen"
+                BorderThickness="1"
+                Click="OnUpdateButtonClick"
+                ToolTip="Update the selected package to the selected version and commit changes." Margin="0,12,0,0" />
+    </Grid>
+</Window>

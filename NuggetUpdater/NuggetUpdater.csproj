@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ApplicationIcon>Icons\NuggetUpdater.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="Icons\NuggetUpdater.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="appconfigs.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="LibGit2Sharp" Version="0.30.0" />
+		<PackageReference Include="NuGet.Common" Version="6.12.1" />
+		<PackageReference Include="NuGet.Protocol" Version="6.12.1" />
+	</ItemGroup>
+</Project>
