@@ -5,18 +5,18 @@ NuggetUpdater is a simple and intuitive tool designed to help .NET developers ef
 ## Installation
 
  1. **Download and Install NuggetUpdater:**
- • Download the latest release from [here. ](https://github.com/TymchenkoArtem/NuggetUpdater/releases/tag/v1.0)
- • Run the installer and configure the app during installation.
+ - Download the latest release from [here. ](https://github.com/TymchenkoArtem/NuggetUpdater/releases/tag/v1.0)
+ - Run the installer and configure the app during installation.
  2. **Configuration Options During Installation:**
- • _Default Project Name_: Specify a NuGet package to set as the default is exists (optional).
- • _Custom NuGet Source_: Provide a custom source URL for packages (optional).
+ - _Default Project Name_: Specify a NuGet package to set as the default is exists (optional).
+ - _Custom NuGet Source_: Provide a custom source URL for packages (optional).
 
 > Configurations are stored in the **appconfigs.json** file located in the '_%AppData%\NuggetUpdater_' directory. This file can be manually edited later to update these settings if needed.
 
 <img src="https://github.com/user-attachments/assets/936fca36-3e1d-4986-86b4-b7f779648fa0" width="250" />  
 
  3. **Context Menu Integration:**
- • Once installed, the app integrates into the Windows Explorer context menu. If it doesn’t appear, restart Windows Explorer via Task Manager or reboot your system.
+ - Once installed, the app integrates into the Windows Explorer context menu. If it doesn’t appear, restart Windows Explorer via Task Manager or reboot your system.
 
 <img src="https://github.com/user-attachments/assets/c9f19551-751e-47e4-9bc1-65bc1ba4df20" width="180" />  
 
@@ -32,10 +32,10 @@ NuggetUpdater is a simple and intuitive tool designed to help .NET developers ef
 
 ## Key Features
 
- • **Quick Access:** Launch directly from the context menu for fast project management.
- • **Dynamic Configuration:** Specify or update default projects and NuGet sources as needed.
- • **Automated Updates:** Scan and update outdated NuGet packages automatically.
- • **Customizable Workflow:** Choose between updating all packages or selecting specific ones.
- • **Lightweight and Efficient:** Runs smoothly on Windows 10/11 with .NET 8.0 or higher.
+ - **Quick Access:** Launch directly from the context menu for fast project management.
+ - **Dynamic Configuration:** Specify or update default projects and NuGet sources as needed.
+ - **Automated Updates:** Scan and update outdated NuGet packages automatically.
+ - **Customizable Workflow:** Choose between updating all packages or selecting specific ones.
+ - **Lightweight and Efficient:** Runs smoothly on Windows 10/11 with .NET 8.0 or higher.
 
 [Download](https://github.com/TymchenkoArtem/NuggetUpdater/releases/tag/v1.0) NuggetUpdater today to simplify and enhance your workflow!
